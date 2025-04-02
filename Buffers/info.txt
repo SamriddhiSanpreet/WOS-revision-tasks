@@ -1,0 +1,20 @@
+In Node.js, a Buffer is used to store binary data, like images or audio, outside the V8 JavaScript engine for efficient manipulation. 
+
+Explanation:
+
+Buffer.from(): Creates a new Buffer object from a string, array, or another Buffer.
+buffer.slice(): Creates a new Buffer that references the same memory as the original, but with a different subset. 
+buffer.toString(): Converts the buffer to a string, using a specified encoding (default is UTF-8).
+buffer.toJSON(): Returns a JSON representation of the buffer.
+fs.readFile(): Reads a file into a Buffer.
+
+And there are many more methods.
+
+Key Concepts:
+
+Binary Data:
+Buffers are used to store and manipulate binary data, which is data represented as a sequence of 0s and 1s.
+Memory Management:
+Buffers are allocated outside the V8 JavaScript engine, allowing for more efficient handling of large binary data.
+Encoding:
+When converting a Buffer to a string, you need to specify the encoding (e.g., UTF-8, ASCII).

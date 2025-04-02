@@ -1,0 +1,6 @@
+Promises are a way to manage asynchronous operations in a more structured and maintainable manner. They represent a future value that may not be available yet. A Promise can be in one of three states:
+
+Pending: Initial state, before the operation completes.
+Fulfilled: The operation completed successfully, and the result is available.
+Rejected: The operation encountered an error or failed.
+Promises provide a clear and predictable way to work with asynchronous code, making it easier to handle complex flows and manage errors.

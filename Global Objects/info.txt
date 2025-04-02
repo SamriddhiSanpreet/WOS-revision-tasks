@@ -1,0 +1,46 @@
+Global Objects in Node.js
+The Global Objects in the Node.js are accessible from anywhere in the application without needing to require or import them explicitly. These objects provides the functionalities such as working with files, streams and process the information.
+
+Unlike the browser-based JavaScript, where the window object server as the global scope, Node.js uses the global as its global objects.
+
+Commonly Used Global Objects :
+
+1. global
+
+The global object is the global namespace in the Node.js. It allows to access the built-in functions and objects anywhere in the application without requiring the explicit imports.
+
+2. console
+
+The console object is used to print the messages to the console and debug applications. It provides the various methods to log messages with different levels of importance, making it the crucial tool for the users.
+
+3. process
+
+The process object in the Node.js is used to provide the detailed information and control over the running Node.js process. It allows the users to interact with the system environment, retrieve the process-related information and manage the execution behaviour.
+
+4. __dirname and __filename
+
+The __dirname and __filename are the two important global variables in Node.js that provides the information about the location of the currently executing script.
+
+__dirname
+
+It represents the absolute directory path of the script being executed.
+It is used for constructing the file paths and handling the directories.
+
+__filename
+
+It represents the absolute file path of the script being executed.
+It helps in logging, debugging and file management.
+
+5. Timers
+
+    setTimeout
+
+    It executes the function once after a specified delay and returns the Timeout object, which can be cleared by using the clearTimeout().
+
+    setInterval
+
+    It executes the function repeatedly at a fixed interval and returns the interval object , which can be cleared using the clearInterval().
+
+6. Buffer
+
+The Buffer class is used to for handling the binary data in the Node.js. It allows direct manipulation of the memory, making it useful for working with streams, file systems and networking.
