@@ -1,0 +1,29 @@
+<h1 style="text-align: center;">All Details Here</h1>
+<h2><a href="./customer">Add Details</a></h2>
+
+<table border="1" align="center">
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Phone</td>
+        <td>Image</td>
+        <td>Action</td>
+    </tr>
+
+    <% customerDetails.map((v,i)=>{ %>
+        <tr>
+            <td><%= v.id %></td>
+            <td><%= v.name %></td>
+            <td><%= v.email %></td>
+            <td><%= v.phone %></td>
+            <td><img src="<%= v.image %>" width="100px"/></td>
+            <td>
+                <a href="/deleteRecord/<%= v.id %>">Delete</a> || 
+                <a href="/updateRecord/<%= v.id %>">Update</a>
+            </td>
+        </tr>
+
+    <% }) %>
+</table>
+

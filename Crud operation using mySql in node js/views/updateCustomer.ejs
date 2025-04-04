@@ -1,0 +1,37 @@
+<h1 style="text-align: center;">Add Customer</h1>
+<form method="post" action="/editCustomer/<%= singleCustomer.id %>" enctype="multipart/form-data">
+    <table border="1" align="center">
+        <tr>
+            <td>Enter Name</td>
+            <td>
+                <input type="text" placeholder="Enter Your Name" name="name" value="<%= singleCustomer.name %>"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Email</td>
+            <td>
+                <input type="text" placeholder="Enter Your Email" name="email" value="<%= singleCustomer.email %>"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Phone</td>
+            <td>
+                <input type="text" placeholder="Enter Your Phone number" name="phone" value="<%= singleCustomer.phone %>"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Upload Image</td>
+            <td>
+                <input type="file"  name="image"/>
+                <img src="<%= singleCustomer.image %>" width="100px"/>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" name="submit" value="Update"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
