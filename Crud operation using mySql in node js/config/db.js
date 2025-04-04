@@ -3,8 +3,8 @@ const mysql = require('mysql2');
 const db = mysql.createPool({
     host: 'localhost',
     user: 'root',
-    password: '',  
-    database: 'CRM',
+    password: '12345',  
+    database: 'crm',
     port: 3306
 }).promise(); 
 
