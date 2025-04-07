@@ -1,0 +1,178 @@
+1. Create a table named users with the following columns:
+
+
+   id: Integer, Primary Key, Auto Increment
+
+
+   username: Varchar(50), Not Null
+
+
+   email: Varchar(100), Unique
+
+
+   created_at: Timestamp, Default current timestamp
+
+
+Ans.  create table users(
+	id integer primary key AUTO_INCREMENT,
+    	username varchar(50) not null,
+    	email varchar(100) not null UNIQUE,
+    	created_at timestamp DEFAULT CURRENT_TIMESTAMP
+     );
+
+
+2. Add a new column phone_number (Varchar(15)) to the users table.
+
+
+Ans.  ALTER table users ADD phone_number varchar(15);
+
+3. Rename the column phone_number to contact_number in the users table.
+
+
+Ans.  ALTER TABLE users CHANGE contact_number phone_number VARCHAR(15);
+
+
+4. Add a UNIQUE constraint on the username column of the users table.
+
+
+Ans.  ALTER TABLE users add CONSTRAINT unique_username UNIQUE (username).
+
+5. Create another table called posts with the following:
+
+
+   id: Integer, Primary Key, Auto Increment
+
+
+   user_id: Integer, Foreign Key references users(id)
+
+
+   title: Varchar(100)
+
+
+   content: Text
+
+
+   created_at: Timestamp, Default current timestamp
+
+
+Ans.  CREATE TABLE posts (
+    	id INT PRIMARY KEY AUTO_INCREMENT,
+    	user_id INT,
+    	title VARCHAR(100),
+    	content TEXT,
+    	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    	FOREIGN KEY (user_id) REFERENCES users(id)
+      );
+
+
+6. Drop the posts table.
+
+
+Ans.  drop table posts;
+
+7. Truncate all data from the users table but keep the structure.
+
+
+Ans. TRUNCATE table users
+
+8.  Rename the users table to members
+
+
+Ans.  alter table users rename members
+
+
+9.  Insert the following 3 users into the users table:
+
+
+	JohnDoe, john@example.com
+
+
+	JaneDoe, jane@example.com
+
+
+	SamSmith, sam@example.com
+
+
+
+Ans.  INSERT INTO users (username, contact_number)
+      VALUES 
+      ('JohnDoe', 'john@example.com'),
+      ('JaneDoe', 'jane@example.com'),
+      ('SamSmith', 'sam@example.com');
+
+
+10.  Insert a post titled "Hello World" for the user JohnDoe with any content of your choice.
+
+
+Ans.  INSERT INTO posts (user_id, title, content) 
+      VALUES (1, 'Hello World', 'This is my first post about learning SQL. Excited to share more!');
+
+11.  Update SamSmith’s phone number to 9876543210.
+
+
+Ans.  UPDATE members SET contact_number='9876543210' where username='SamSmith'
+
+
+12.  Delete the user JaneDoe from the table.
+
+
+Ans.  DELETE FROM members WHERE username='JaneDoe' AND id='2'
+
+
+13.  Copy all users from users to a new table called backup_users.
+
+
+Ans.  CREATE TABLE backup_users AS
+      SELECT * FROM members;
+
+14.  Retrieve all posts along with the username of the person who posted them (use JOIN).
+
+Ans.  SELECT posts.* // saare posts ka data le lo. , members.username  // us user ka username bhi le lo jisne post kiya hai.
+      FROM posts
+      JOIN members ON posts.members_id = members.id;  // dono tables ko jod diya user_id aur id ke base par.
+
+
+15.  Retrieve all users who have not created any posts.
+
+
+Ans.  SELECT members.*
+      FROM members
+      LEFT JOIN posts ON members.id = posts.members_id
+      WHERE posts.id IS NULL;
+
+		OR
+
+     SELECT * 
+     FROM users
+     WHERE id NOT IN (SELECT user_id FROM posts);
+
+
+16.  Delete all posts created before a specific date (e.g., 2024-01-01).
+
+Ans.  Agar aap pehle dekhna chahti ho ki kaunse posts delete honge, toh pehle SELECT se check kar lo:
+
+		SELECT * FROM posts
+		WHERE created_at < '2024-01-01';
+
+     Check karne ke baad hi delete run karna — safe practice hai!
+
+		DELETE FROM posts
+                WHERE created_at < '2024-01-01';
+
+
+17.  Update all users and set their email domain to @newdomain.com.
+
+
+Ans.  UPDATE users
+      SET email = CONCAT(SUBSTRING_INDEX(email, '@', 1), '@newdomain.com');
+
+	// SUBSTRING_INDEX(email, '@', 1) — yeh email ka username part lega, jaise agar email hai john@example.com, toh yeh ban jayega john.
+
+       //  CONCAT(..., '@newdomain.com') — iske baad naya domain laga denge.
+
+
+
+
+
+
+
