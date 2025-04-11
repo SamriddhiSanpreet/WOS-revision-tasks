@@ -81,7 +81,9 @@ sequelize.sync({alter:true}).then(()=>{
     // });
     // return Country.findOne({where:{countryName:'India'}});
     // return Country.destroy({where:{countryName:'New Zealand'}});
+    // return Country.findOne({where:{countryName:'Korea'}});
     return Country.findOne({where:{countryName:'Korea'}});
+
 
     
 
@@ -97,9 +99,9 @@ sequelize.sync({alter:true}).then(()=>{
 // these code is used to show the data which get connected through id and in capital there is showing the id of their country .
         }).then((data)=>{
             country = data;
-            // // return country.getCapital();
+            // // return country.getCapital();  
             // return country.createCapital({
-            //     capitalName:'Auckland'
+            //     capitalName:'Auckland'  
             // });
             return Capital.findOne({where:{capitalName:'Seoul'}});
             // console.log(data);
@@ -123,3 +125,7 @@ sequelize.authenticate().then(()=>{
 }).catch((err)=>{
     console.error('Unable to connect to the database:',err);
 });
+
+
+
+// i have to practise the topic called include keyword with one one 
