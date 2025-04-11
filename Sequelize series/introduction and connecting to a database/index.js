@@ -25,7 +25,7 @@ const { type } = require('os');
 // sequelize.sync({ force: true, match: /_san$/ }); // showing an error 
 
 const User = sequelize.define('user',{
-    user_id:{
+    id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -116,6 +116,9 @@ const User = sequelize.define('user',{
 },
 {
     freezeTableName:true ,//when we use this method then it means we don't want to plural our table name . suppose i haven't use this method and given my model name user then when we run and see in our mysql the the model will create but the name of the model changes to users which means it is the default behaviour of mysql to plural the table name.
+    timestamps:true,
+    paranoid:true,
+    deletedAt:'TimeBarbaad',
     validate:{
         usernamePassMatch(){
            if(this.username === this.password) {
@@ -132,7 +135,6 @@ const User = sequelize.define('user',{
 // console.log(sequelize.models.user);
 // User.drop();
 
-
 // User.sync({force:true}).then((data)=>{   // Using the force method we are saying to run the code forcely.
 //     console.log("Table and model synced successfully !!",data);
 // }).catch((err)=>{
@@ -145,9 +147,9 @@ const User = sequelize.define('user',{
 //     console.log("Something wrong");
 // })
 
-function myFunction(){
-    console.log('running sql statement');
-}
+// function myFunction(){
+//     console.log('running sql statement');
+// }
 
 User.sync({alter:true}).then(()=>{  // Using the force and alter is same but the 
 
@@ -267,7 +269,7 @@ User.sync({alter:true}).then(()=>{  // Using the force and alter is same but the
 // });
 
 // return User.findByPk(32);
-// return User.findOne(); only first one data will show
+// return User.findOne(); // only first one data will show
 // return User.findOne({where:{
 //     age:{
 //         [Op.or]:{
@@ -320,7 +322,58 @@ User.sync({alter:true}).then(()=>{  // Using the force and alter is same but the
 // return sequelize.query(`update user set age = 20 where username ='ashu'`,{type:Sequelize.QueryTypes.UPDATE});
 // return sequelize.query(`select * from user limit 2`,{model:User,plain:true});
 
-return sequelize.query(`select * from user limit 2`,{logging:myFunction})
+// return sequelize.query(`select * from user limit 2`,{logging:myFunction})
+
+// return sequelize.query(`select * from user where username :username`,{
+//     replacements:{username:'mice'},
+//     // plain:true
+// });
+
+// return sequelize.query(`select * from user where username IN(:username)`,{
+//     replacements:{username:['mice','ashu']},
+//     // plain:true
+// });
+
+// return sequelize.query(`select * from user where username like :username`,{
+//     replacements:{username:'as%'},
+//     // plain:true
+// });
+
+// return sequelize.query(`select * from user where username like :username`,{
+//     replacements:{username:'as%'},
+//     // plain:true
+// });
+
+return sequelize.query(`select * from user where username = ?`,{
+    replacements:['sam'],
+    // plain:true
+});
+
+// return sequelize.query(`select * from user where username = $username `,{
+//     bind:{username:'sam'},
+//     // plain:
+//     // true
+// });
+// return sequelize.query(`select * from user where username = $1 `,{
+//     bind:['sam'],
+//     // plain:
+//     // true
+// });
+
+// return User.destroy({
+//     where:{id:5},
+//     // force:true // it will forcely delete the data from your database.
+// })
+
+// return User.restore({
+//     where:{id:5},
+// })
+
+// return sequelize.query(`select * from user `);
+// return User.findAll();
+// return User.findAll({where:{username:'krushi'}});
+    
+
 
 }).then((data)=>{
     // data.forEach((element)=>{
