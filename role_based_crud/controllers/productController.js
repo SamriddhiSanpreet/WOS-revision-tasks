@@ -1,4 +1,5 @@
 const Product = require('../models/product');
+const User = require('../models/user'); 
 
 exports.createProduct = async (req, res) => {
   const { name, price } = req.body;
@@ -16,20 +17,29 @@ exports.createProduct = async (req, res) => {
 };
 
 exports.getAllProducts = async (req, res) => {
-  try {
-    let products;
-    if (req.user.role === 'admin') {
-      products = await Product.findAll();
-    } else if (req.user.role === 'seller') {
-      products = await Product.findAll({ where: { userId: req.user.id } });
-    } else {
-      products = await Product.findAll();
+    try {
+      let products;
+  
+      if (req.user.role === 'admin') {
+        products = await Product.findAll();
+      } else if (req.user.role === 'seller') {
+        products = await Product.findAll({ where: { userId: req.user.id } });
+      } else if (req.user.role === 'user') {
+        const sellers = await User.findAll({ where: { role: 'seller' } });
+        const sellerIds = sellers.map(seller => seller.id);
+  
+        products = await Product.findAll({
+          where: {
+            userId: sellerIds
+          }
+        });
+      }
+  
+      res.json(products);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
     }
-    res.json(products);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
+  };
 
 exports.updateProduct = async (req, res) => {
   const { id } = req.params;
