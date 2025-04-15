@@ -84,9 +84,22 @@ sequelize.sync({alter:true}).then(()=>{
 // .then((data)=>{
 //     // product = data;
 //     customer = data;
-//     // customer.addProducts(product);
-//     product.addCustomers(customer)
+    // customer.addProducts(product);
+    // product.addCustomers(customer)
 // })
 .catch((err)=>{
     console.log(err);
 });
+
+
+
+// ********* Process  **************
+
+// process.beforeExit()
+// process.disconnect()
+// process.exit()
+// process.message()
+// process.uncaughtException()
+// process.env()
+
+// Read kar lenaa

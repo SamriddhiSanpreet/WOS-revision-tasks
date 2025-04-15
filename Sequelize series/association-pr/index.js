@@ -47,7 +47,6 @@ let course,student;
 
 sequelize.sync({alter:true}).then(()=>{
     return Course.findOne({where:{courseName:'History'}})
-    
 })
 .then((data)=>{
     courseInstance = data;
