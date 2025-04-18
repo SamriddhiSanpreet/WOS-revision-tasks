@@ -1,0 +1,95 @@
+What is Process ? 
+
+=>  Node.js ka process object ek global object hai jo current running Node.js process ke baare mein information deta hai   aur usse control bhi karne deta hai.
+
+1) process.beforeExit()
+
+=> Jab nodeJs process automatically close hone wala hota hai tab beforeExit event trigger hota hai.Ye event last moment pr kaam krne ka mauka deta hain.
+
+2) process.disconnect()
+
+=>  Jab tumhara process ek parent process se connected ho tab use disconnect krne ke liye hum ye method use krte hai.
+
+3) process.exit()
+
+=> ye koi bhi process ko immediately end krne ka kaam krta hai , isme agar 0 aata hai to iska mtlab hai event successfully trigger ho gya hai but agar koi bhi non-zero value aati hai such as 1,2,3,8,etc to iska mtlb hota hai ki koi error hai.
+
+4) process.message()
+
+=> Ye method or property tab use hoti hai jab ek process dusre process se communication kr rha ho. Mtlab ek child process ko koi message bhejna ya receive krna ho tab hum ye method use krte hai.
+
+5) process.uncaughtException()
+
+=> Agar koi aisa error aata hai jo try-catch se handle nahi hua, to ye event usse pakadta hai aur crash hone se bachata hai (temporarily).
+
+6) process.env()
+
+=> process.env ke through tum environment variables access kar sakti ho, jaise DB_PASSWORD, PORT, etc. Hum isse dynamic configuration manage krte hai aur ye security and flexibility dono ke liye useful hota hai.
+
+7) process.On()
+
+=>  process.on() ka use hota hai Node.js process ke events ko listen karne ke liye.
+
+    Matlab jab koi specific event occur hota hai, to tum us par apna code chalaa sakti ho.
+
+    Ye ek event listener hai — jaise document.addEventListener() hota hai browser mein, waise hi Node.js ke process events ko handle karta hai process.on().
+
+8) process.argv()
+
+=> Isse tum command line se input le sakti ho. Ye array hoti hai jisme:
+
+Index 0: Node ka path
+
+Index 1: Tumhare file ka path
+
+Index 2 se aage: User ke input
+
+9) process.cwd()
+
+=> Iska full form hai Current Working Directory. Ye batata hai ki abhi Node.js ka process kis directory mein run ho raha hai.
+
+10) process.pid()
+
+=> Ye tumhare current process ka Process ID (PID) return karta hai. Useful hota hai jab tumhe kisi process ko kill ya monitor karna ho.
+
+11) process.uptime()
+
+=>  Ye batata hai ki process kab se chal raha hai (in seconds).
+
+12) process.memoryUsage()
+
+=> Ye tumhare process ka RAM usage batata hai — kitna memory use ho rahi hai.
+
+13) process.platform
+
+=> Ye tumhe tumhara OS type batata hai mtlab agar windows hai to win32 ayega , mcOS hai to darwin aayega, linux hai to linux aayega.
+
+14) process.arch()
+
+=> btata hai ki tumhare cpu ka architecture kya hai.
+
+15) process.stdin()
+
+=> Input lene ke liye use hota hai.
+
+16) process.stdout()
+
+=> Output print karne ke liye use hota hai.
+
+17) process.stderr()
+
+=> 	Errors print karne ke liye use hota hai.
+
+18) process.hrtime()
+
+=> hrtime ka matlab hota hai — High Resolution Time.
+Iska use tab hota hai jab hume milliseconds se bhi zyada accurate (nanoseconds tak) performance ya time measurement chahiye ho.
+Maan le tu kisi function ka exact execution time nikalna chahti hai. Date.now() toh sirf milliseconds tak precise hota hai, but process.hrtime() deta hai nanoseconds level ki accuracy!
+
+19) process.nextTick()
+
+=> Current phase ke turant baad ye event trigger hota hai.
+
+20) setImmediate()
+
+=> Jab current event loop phase (aur I/O, timers wagairah) complete ho jaye, tab ye run hota hai.
