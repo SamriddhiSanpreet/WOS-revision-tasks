@@ -1,0 +1,162 @@
+What is Utility Modules ?
+
+Utility => means help krne wali cheez.
+Modules => means ek file ya feature jo kucch kaam krta hai.
+
+Utility Modules => Aise pre-ready features jo node.js ke andar hote hain aur hamari programming ko aasan bana dete hain.
+
+SOME OF THE UTILITY MODULES ARE :-
+
+1) path => path create krne ke liye use hota hain.
+2) os => Operating system ki information dene ke liye use hota hai.
+3) events => jo bhi events hoti hai such as button dabana, file save krna,etc unhe handle krne ka kaam utility modules krta hai.
+4) crypto => Data ko secure krne ke liye use hota hai jaise password ko encrypt krne ke liye,etc.
+5) util => node.js ka helper box jo promises, inheritance aur formatting easy bnata hai.
+
+SOME OF THE METHODS OF THE UTILITY METHOD :-  
+
+1) PATH MODULE :-
+
+    => path.basename(path) :: file/folder ka last part deta hai.
+    => path.dirname(path) ::  path ka directory part deta hai.
+    => path.extname(path) :: file extension deta hai.
+    => path.join([...paths]) :: multiple paths ko jodta hai.
+    => path.resolve([...paths]) :: absolute path banata hai.
+    => path.parse(path) :: path ko parts me tod deta hai.
+    => path.format(pathObject) :: parts ko jod kar path banata hai.
+    => path.normalize(path) → path ko theek karta hai.
+
+2) OS MODULE :-
+
+    => os.platform() ::  OS type (Windows, Linux, etc).
+    => os.arch() ::  CPU architecture.
+    => os.cpus() :: CPU cores ka details.
+    => os.freemem() :: free memory.
+    => os.totalmem() :: total memory.
+    => os.hostname() :: device ka naam.
+    => os.homedir() :: home directory path.
+    => os.uptime() :: kitna time se system chalu hai.
+    => os.networkInterfaces() :: network ka info.
+
+3) DNS MODULE :-
+
+    => dns.lookup(hostname, callback) :: hostname ka IP address find karta hai.
+    => dns.resolve(hostname, [rrtype], callback) :: DNS records resolve karta hai.
+    => dns.reverse(ip, callback) :: IP address ka hostname nikalta hai.
+
+4) EVENTS MODULE :-
+
+    => emitter.on(eventName, listener) :: event ke liye listener lagata hai.
+    => emitter.emit(eventName, [...args]) :: event trigger karta hai.
+    => emitter.once(eventName, listener) :: ek baar ke liye listener lagata hai.
+    => emitter.removeListener(eventName, listener) :: listener remove karta hai.
+
+5) CRYPTO MODULE :-
+
+    => crypto.createHash(algorithm) :: hash banata hai (jaise sha256).
+    => crypto.createHmac(algorithm, key) :: HMAC banata hai.
+    => crypto.randomBytes(size) :: random bytes generate karta hai.
+    => crypto.createCipheriv(algorithm, key, iv) :: encryption start karta hai.
+    => crypto.createDecipheriv(algorithm, key, iv) :: decryption start karta hai.
+    => crypto.pbkdf2(password, salt, iterations, keylen, digest, callback) :: password se key banata hai.
+
+6) UTIL MODULE :-
+
+    => util.promisify(function) :: callback-based function ko promise me convert karta hai.
+    => util.callbackify(promiseFunction) :: promise-based function ko callback wale function me badalta hai.
+    => util.inherits(constructor, superConstructor) :: inheritance set karta hai.
+    => util.format(format, [...args]) :: string format karta hai (jaise printf).
+
+7) HTTP MODULE :-
+
+    => http.createServer(callback) :: server create karta hai.
+    => http.request(options, callback) :: HTTP request banata hai.
+    => http.get(url, callback) :: GET request bhejta hai.
+
+8) HTTPS MODULE :-
+
+    => Same as http, but secure version (https.createServer, https.request, etc.)
+
+9) FS MODULE :-
+
+    => fs.readFile(path, callback) :: file ko read karta hai.
+    => fs.writeFile(path, data, callback) :: file mein likhta hai.
+    => fs.appendFile(path, data, callback) :: file mein append karta hai.
+    => fs.readdir(path, callback) :: directory ke contents dikhata hai.
+    => fs.mkdir(path, callback) :: directory banata hai.
+    => fs.unlink(path, callback) :: file delete karta hai.
+
+10) STREAM MODULE :-
+
+    => stream.Readable :: Readable stream (data ko read karne ke liye).
+    => stream.Writable :: Writable stream (data ko likhne ke liye).
+    => stream.pipe(destination) :: stream ko ek destination par pipe karta hai.
+
+11) CLUSTER MODULE :- 
+
+    => cluster.fork() :: new child processes create karta hai.
+    => cluster.on('exit', callback) :: child process ke exit hone par event handle karta hai.
+
+12) CHILD_PROCESS MODULE :-
+
+    => child_process.spawn(command, args) :: ek new process ko spawn karta hai.
+    => child_process.exec(command, callback) :: command ko shell mein execute karta hai.
+    => child_process.fork(modulePath) :: child process ko fork karta hai, jo ek module run karega.
+
+13) URL MODULE :-
+
+    => url.parse(urlString) :: URL ko parse karta hai.
+    => url.format(urlObject) :: URL ko format karta hai.
+    => url.resolve(from, to) :: relative URL ko resolve karta hai.
+
+14) QUERYSTRING MODULE :-
+
+    => querystring.stringify(queryObject) :: query object ko query string banata hai.
+    => querystring.parse(queryString) :: query string ko object me convert karta hai.
+
+15) TIMER MODULE :-
+
+    => setTimeout(callback, delay) :: delay ke baad function ko run karta hai.
+    => setInterval(callback, interval) :: interval par function ko run karta hai.
+    => clearTimeout(timeoutId) :: timeout ko cancel karta hai.
+    => clearInterval(intervalId) :: interval ko cancel karta hai.
+
+16) DNS.PROMISES MODULE :-
+
+    => dns.promises.lookup(hostname) :: promise-based IP address find karta hai.
+    => dns.promises.resolve(hostname) :: promise-based DNS records resolve karta hai.
+
+17) ASSERT MODULE :-
+
+    => assert.strictEqual(actual, expected) :: values ko compare karta hai.
+    => assert.deepStrictEqual(actual, expected) :: deep comparison karta hai (objects/arrays).
+
+18) BUFFER MODULE :-
+
+    => Buffer.from(string) :: string ko buffer me convert karta hai.
+    => Buffer.concat(list) :: multiple buffers ko merge karta hai.
+    => Buffer.alloc(size) :: buffer ko allocate karta hai.
+
+19) VM MODULE :-
+
+    => vm.runInNewContext(code) :: code ko new context me run karta hai.
+    => vm.createContext(sandbox) :: custom sandbox create karta hai for running code.
+
+20) PROCESS MODULE :- 
+
+    => process.env :: environment variables access karta hai.
+    => process.exit(code) :: process ko exit karta hai.
+    => process.on('exit', callback) :: exit hone par callback run hota hai.
+
+21) TLS MODULE :- 
+
+    => tls.createServer(options, callback) :: TLS server create karta hai.
+    => tls.connect(options, callback) :: TLS client connection establish karta hai.
+
+22) ZLIB MODULE :-
+
+    => zlib.gzip(buffer, callback) :: buffer ko gzip compress karta hai.
+    => zlib.gunzip(buffer, callback) :: buffer ko decompress karta hai.
+
+// header se bhi data paas kr skte hai.
+// cluster, microservices,routing,middleware,custom middleware,cookie-parser,body-parser,session,passprt,cookie,headers me aur kya kya keywords aate hai, path ke kitne methods hote hai,oops concept in deep,oops.
